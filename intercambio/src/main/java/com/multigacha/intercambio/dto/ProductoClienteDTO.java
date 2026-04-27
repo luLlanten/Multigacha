@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class InterClienteDTO {
+@NoArgsConstructor
+public class ProductoClienteDTO {
     private Integer id;
-    private ClienteDTO clienteId;
-    private IntercambioDTO intercambioId;
+    private ClienteDTO cliente;
+    private ProductoDTO producto;
 }

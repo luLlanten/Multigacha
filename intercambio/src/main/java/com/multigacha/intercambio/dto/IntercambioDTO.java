@@ -12,6 +12,5 @@ import lombok.NoArgsConstructor;
 public class IntercambioDTO {
     private Integer id;
     private Date fecha;
-    private boolean estado;
 
 }

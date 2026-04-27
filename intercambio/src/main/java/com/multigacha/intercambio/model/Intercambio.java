@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +27,8 @@ public class Intercambio {
     @Column(nullable = false)
     private Date fecha;
 
-    @Column(nullable = false)
-    private boolean estadoInter;
+    @OneToOne
+    @JoinColumn(name = "producto_cliente_id", nullable = false)
+    private ProductoCliente traspaso;
 
 }
