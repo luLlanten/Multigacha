@@ -32,14 +32,8 @@ public class Cliente {
     private String apellido;
 
     @Column(nullable = false)
-    private Date fech_nac;
+    private Date fechNac;
 
-    @Column(length = 40, nullable = false) // necesario para validaciones
-    private String correo;
-
-    @Column(length = 50, nullable = false) // cambiable si no se consideraran envios
-    private String direccion;
-
-    @Column(length = 10, nullable = true) // obviar el +56
-    private Integer telefono;
+    @Column(name = "contacto_id", nullable = false)
+    private Integer idContacto;
 }

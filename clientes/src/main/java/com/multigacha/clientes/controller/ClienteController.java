@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.multigacha.clientes.dto.ClienteDTO;
 import com.multigacha.clientes.model.Cliente;
 import com.multigacha.clientes.service.ClienteService;
 
@@ -37,7 +38,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         try {
             servicio.borrarClientePorId(id);
             return ResponseEntity.noContent().build();
@@ -47,7 +48,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Cliente> buscarPorId(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(servicio.mostrarPorId(id));
         } catch (Exception e) {
@@ -56,7 +57,7 @@ public class ClienteController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Cliente> actualizar(@PathVariable Long id, @RequestBody Cliente nuevo) {
+    public ResponseEntity<Cliente> actualizar(@PathVariable Integer id, @RequestBody ClienteDTO nuevo) {
         try {
             return ResponseEntity.ok(servicio.modificarCliente(id, nuevo));
         } catch (Exception e) {
