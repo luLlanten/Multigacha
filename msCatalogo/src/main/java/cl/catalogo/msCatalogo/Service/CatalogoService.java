@@ -1,8 +1,11 @@
 package cl.catalogo.msCatalogo.Service;
 
+import cl.catalogo.msCatalogo.Repository.CategoriaRepository;
+import cl.catalogo.msCatalogo.Repository.ProductoRespository;
 import cl.catalogo.msCatalogo.dto.ProductoDTO;
-import cl.catalogo.msCatalogo.model.*;
-import cl.catalogo.msCatalogo.Repository.*;
+import cl.catalogo.msCatalogo.model.Categoria;
+import cl.catalogo.msCatalogo.model.Producto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
