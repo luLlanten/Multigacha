@@ -1,9 +1,7 @@
 package com.multigacha.intercambio.service;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.multigacha.intercambio.client.ClienteClient;
 import com.multigacha.intercambio.client.ProductoClient;
 import com.multigacha.intercambio.dto.ClienteDTO;
-import com.multigacha.intercambio.dto.IntercambioDTO;
 import com.multigacha.intercambio.dto.ProductoDTO;
 import com.multigacha.intercambio.model.Intercambio;
 import com.multigacha.intercambio.model.ProductoCliente;
