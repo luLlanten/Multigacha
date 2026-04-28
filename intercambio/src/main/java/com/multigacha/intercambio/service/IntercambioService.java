@@ -43,11 +43,11 @@ public class IntercambioService {
     }
 
     public Intercambio buscarIntercambioPorId(Integer id) {// desde empleado
-        return repo1.findById(id).get();
+        return repo1.findById(id).orElseThrow(() -> new RuntimeException("Intercambio no encontrado"));
     }
 
-    public ProductoCliente buscarProductoClientePorId(Integer id) {
-        return repo2.findById(id).get();
+    public ProductoCliente buscarInventarioPorId(Integer id) {
+        return repo2.findById(id).orElseThrow(() -> new RuntimeException("Inventario no encontrado"));
     }
 
     public ProductoCliente crearInventario(Integer idCliente, Integer idProducto) {
