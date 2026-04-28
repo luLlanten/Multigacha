@@ -22,22 +22,32 @@ public class CatalogoController {
     private CatalogoService service;
 
     @PostMapping("/expansion")
-    public ResponseEntity<Categoria> crearExpansion (@RequestBody Categoria categoria){
-        try{
+    public ResponseEntity<Categoria> crearExpansion(@RequestBody Categoria categoria) {
+        try {
             return ResponseEntity.ok(service.guardarExpansion(categoria));
-        }catch(Exception e){
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/carta")
     public ResponseEntity<Producto> agregarCarta(@RequestBody ProductoDTO dto) {
-        return ResponseEntity.ok(service.agregarCarta(dto));
+        try {
+            Producto producto = service.agregarCarta(dto);
+            return ResponseEntity.ok(producto);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/todo")
     public ResponseEntity<List<Categoria>> listarTodo() {
-        return ResponseEntity.ok(service.obtenerTodo());
+        List<Categoria> lista = service.obtenerTodo();
+        if (lista.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(lista);
+        }
     }
 
 }
