@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.multigacha.modificacion.client.ContactoClient;
 import com.multigacha.modificacion.client.ProductoClient;
-import com.multigacha.modificacion.dto.ContactoDTO;
+
 import com.multigacha.modificacion.dto.ProductoDTO;
 import com.multigacha.modificacion.model.Empleado;
 import com.multigacha.modificacion.model.Modificacion;
@@ -50,10 +50,6 @@ public class ModificacionService {
         return repo1.findById(id).get();
     }
 
-    public void crearContacto(ContactoDTO contactoDTO) {
-        contacto.crearContacto(contactoDTO);
-    }
-
     public void crearEmpleado(Empleado empleado) {
         if (contacto.buscarDTO(empleado.getIdContacto()) != null) {
             repo1.save(empleado);
@@ -68,15 +64,6 @@ public class ModificacionService {
         modificacion.setFecha(new Date());
         modificacion.setIdProducto(productoDTO.getId());
         return modificacion;
-    }
-
-    public ProductoDTO modificarProducto(ProductoDTO productoNuevo, Integer idEmpleado) {
-        ProductoDTO productoViejo = producto.buscarDTO(productoNuevo.getId());
-        productoViejo.setNombre(productoNuevo.getNombre());
-        productoViejo.setPrecio(productoNuevo.getPrecio());
-        crearModificacion(idEmpleado, productoViejo.getId());
-        producto.mandarModificacion(productoViejo);
-        return productoViejo;
     }
 
 }
