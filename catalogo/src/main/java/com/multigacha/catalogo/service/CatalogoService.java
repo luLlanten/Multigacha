@@ -41,4 +41,9 @@ public class CatalogoService {
     public List<Categoria> obtenerTodo() {
         return repo1.findAll();
     }
+    
+    public Producto buscarPorId(Integer id) {
+    return repo2.findById(id)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
+    }
 }
