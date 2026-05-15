@@ -52,7 +52,7 @@ public class CatalogoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable Integer id) {
+    public ResponseEntity<Producto> buscarProductoPorId(@PathVariable Integer id) {
         try{
             return ResponseEntity.ok(service.buscarPorId(id));
         } catch (Exception e) {

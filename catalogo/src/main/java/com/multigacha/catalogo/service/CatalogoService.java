@@ -44,6 +44,6 @@ public class CatalogoService {
     
     public Producto buscarPorId(Integer id) {
     return repo2.findById(id)
-            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
     }
 }
