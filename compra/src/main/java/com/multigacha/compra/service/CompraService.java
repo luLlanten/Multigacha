@@ -4,6 +4,8 @@ import com.multigacha.compra.model.Compra;
 import com.multigacha.compra.repository.CompraRepository;
 import com.multigacha.compra.client.*;
 import com.multigacha.compra.dto.*;
+
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
@@ -47,7 +49,11 @@ public class CompraService {
     compra.setFechaCompra(new Date());
 
     Compra compraGuardada = repo.save(compra);   
-    return new CompraBoletaDTO(compraGuardada, boletaGenerada);
+    CompraBoletaDTO c1 = new CompraBoletaDTO(compraGuardada, boletaGenerada);
 
+    return c1;
 }
+    public List<Compra> listar(){
+        return repo.findAll();
+    }
 }

@@ -1,6 +1,7 @@
 package com.multigacha.catalogo.config;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.multigacha.catalogo.model.Categoria;
@@ -10,6 +11,7 @@ import com.multigacha.catalogo.repository.ProductoRepository;
 
 @Configuration
 public class DataLoader {
+    @Bean
     CommandLineRunner initCatalogoDataBase(CategoriaRepository repo1, ProductoRepository repo2){
         return args->{
             if(repo1.count()==0 && repo2.count()==0){

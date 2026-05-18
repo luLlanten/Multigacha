@@ -40,7 +40,7 @@ public class ClienteService {
 
     public Cliente modificarCliente(Integer idCliente, ClienteDTO nuevo) {
         Cliente viejo = repo.findById(idCliente).get();
-        ContactoDTO contactoDTO = contacto.buscarDTO(viejo.getIdContacto());
+        ContactoDTO contactoDTO = contacto.buscarContacto(viejo.getIdContacto());
         viejo.setNombre(nuevo.getNombre());
         viejo.setApellido(nuevo.getApellido());
         viejo.setFechNac(nuevo.getFechNac());
