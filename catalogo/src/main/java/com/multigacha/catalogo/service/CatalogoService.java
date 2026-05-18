@@ -20,9 +20,6 @@ public class CatalogoService {
     private ProductoRepository repo2;
 
     public Categoria guardarExpansion(Categoria categoria) {
-        if (categoria.getProductos() != null) {
-            categoria.getProductos().forEach(p -> p.setCategoria(categoria));
-        }
         return repo1.save(categoria);
     }
 
@@ -33,17 +30,27 @@ public class CatalogoService {
         Producto nuevo = new Producto();
         nuevo.setNombre(dto.getNombre());
         nuevo.setPrecio(dto.getPrecio());
+        nuevo.setStock(dto.getStock());
         nuevo.setCategoria(categoria);
 
-        return repo2.save(nuevo);
+        return repo2.save(nuevo);   
     }
 
-    public List<Categoria> obtenerTodo() {
-        return repo1.findAll();
+    public List<Producto> obtenerTodo() {
+        return repo2.findAll();
     }
     
     public Producto buscarPorId(Integer id) {
-    return repo2.findById(id)
+        return repo2.findById(id)
             .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
+
+    public Producto bajarStock(Integer id, Integer cantidad){
+        Producto a = buscarPorId(id);
+        if (a.getStock() < cantidad) {
+            throw new RuntimeException("no hay suficientes cartas");
+        }
+        a.setStock(a.getStock()-cantidad);
+        return repo2.save(a);
     }
 }

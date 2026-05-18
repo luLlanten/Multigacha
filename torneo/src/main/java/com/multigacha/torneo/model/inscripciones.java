@@ -1,7 +1,5 @@
-package com.multigacha.catalogo.model;
+package com.multigacha.torneo.model;
 
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,28 +10,20 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-@Entity
 @Data
+@Entity
+@Table(name = "inscripciones")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "producto")
-public class Producto {
+public class inscripciones {
     @Id
-    @Column(name ="producto_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
-    private String nombre;
-
-    @Column(nullable = false)
-    private double precio;
-
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    @JoinColumn(name = "torneo_id")
+    private torneo torneo;
 
-    @Column (nullable = false)
-    private Integer stock;
+    private Integer clienteId;
+    private String nombre;
 }
