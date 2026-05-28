@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.multigacha.intercambio.dto.ProductoDTO;
 
-@FeignClient(name = "producto", url = "http://localhost:3308")
+@FeignClient(name = "catalogo", url = "http://localhost:8081/api/v1/catalogo")
 public interface ProductoClient {
-    @GetMapping("api/v1/productos/{id}")
+    @GetMapping("/{id}")
     ProductoDTO buscarDTO(@PathVariable("id") Integer id);
 }
